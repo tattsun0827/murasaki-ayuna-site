@@ -1,11 +1,17 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>お問い合わせフォーム設定マニュアル｜紫あゆな公式サイト</title><meta name="robots" content="noindex,nofollow"><style>
-  :root{--p:#4b1766;--g:#c49a43;--bg:#faf6fb;--ink:#271e2b}*{box-sizing:border-box}body{margin:0;color:var(--ink);background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,"Noto Sans JP",sans-serif;line-height:1.8}.hero{padding:70px 20px;color:#fff;background:linear-gradient(135deg,#21102f,#652080)}.wrap{width:min(900px,calc(100% - 32px));margin:auto}.hero h1{margin:0;font-size:clamp(2rem,6vw,3.5rem)}.hero p{max-width:700px}.toc,.step,.check{margin:28px 0;padding:28px;border:1px solid #e6dce9;border-radius:18px;background:#fff;box-shadow:0 12px 35px rgba(52,20,68,.06)}main{padding:35px 0 70px}h2{color:var(--p);font-size:1.6rem}h3{color:var(--p)}.num{display:inline-grid;width:38px;height:38px;margin-right:10px;place-items:center;border-radius:50%;color:#fff;background:var(--p)}code{padding:.15em .4em;border-radius:4px;background:#f0e7f4;word-break:break-all}.important{padding:18px;border-left:4px solid var(--g);background:#fff8e6}.button{display:inline-block;padding:11px 18px;border-radius:99px;color:#fff;background:var(--p);text-decoration:none}li{margin:.5em 0}img{max-width:100%}@media(max-width:600px){.step,.toc,.check{padding:20px}.hero{padding:48px 12px}}
-</style></head><body><header class="hero"><div class="wrap"><p>紫あゆな公式サイト</p><h1>お問い合わせフォーム<br>設定マニュアル</h1><p>Googleスプレッドシートへの記録と、通知メール送信を有効にする手順です。</p></div></header><main class="wrap">
-  <nav class="toc" aria-label="目次"><h2>目次</h2><ol><li><a href="#step1">スプレッドシートを作成</a></li><li><a href="#step2">GASコードを貼り付け</a></li><li><a href="#step3">Webアプリとしてデプロイ</a></li><li><a href="#step4">URLをCodexへ送る</a></li><li><a href="#step5">送信テストと確認</a></li></ol></nav>
-  <section class="step" id="step1"><h2><span class="num">1</span>スプレッドシートを作成</h2><ol><li>Googleアカウントへログインし、<a href="https://sheets.new" target="_blank" rel="noopener">新しいGoogleスプレッドシート</a>を開きます。</li><li>ファイル名を「紫あゆな公式サイト お問い合わせ管理」など、分かりやすい名前へ変更します。</li><li>メニューの「拡張機能」→「Apps Script」を選択します。</li></ol><p class="important">お問い合わせ用GASは、このスプレッドシートから開いたApps Scriptへ設定してください。これにより、届いた内容が同じスプレッドシートへ自動記録されます。</p></section>
-  <section class="step" id="step2"><h2><span class="num">2</span>GASコードを貼り付け</h2><ol><li>Apps Script画面で、最初から表示されているコードをすべて選択します。</li><li>納品フォルダー内の <code>gas/Code.gs</code> を開き、内容をすべてコピーして貼り付けます。</li><li>上部の保存アイコンを押し、プロジェクト名を「紫あゆな お問い合わせ受付」などへ変更します。</li></ol><p>通知先は、あらかじめ <code>kazutatsu0827@gmail.com</code> に設定されています。</p></section>
-  <section class="step" id="step3"><h2><span class="num">3</span>Webアプリとしてデプロイ</h2><ol><li>画面右上の「デプロイ」→「新しいデプロイ」を選択します。</li><li>「種類の選択」で歯車アイコンを押し、「ウェブアプリ」を選択します。</li><li>説明欄に「初回公開」などと入力します。</li><li>「次のユーザーとして実行」は <strong>自分</strong> を選択します。</li><li>「アクセスできるユーザー」は <strong>全員</strong> を選択します。</li><li>「デプロイ」を押します。</li></ol><h3>初回の承認</h3><ol><li>「アクセスを承認」を押し、ご自身のGoogleアカウントを選択します。</li><li>「このアプリはGoogleで確認されていません」と表示された場合は、「詳細」→「（プロジェクト名）に移動」を選びます。</li><li>スプレッドシートへの書き込みとメール送信の権限を確認し、「許可」を押します。</li></ol><p class="important">「アクセスできるユーザー」が「全員」になっていないと、サイト訪問者がフォームを送信できません。</p></section>
-  <section class="step" id="step4"><h2><span class="num">4</span>WebアプリURLをCodexへ送る</h2><ol><li>デプロイ完了画面に表示される「ウェブアプリ」のURLをコピーします。</li><li>URLは通常 <code>https://script.google.com/macros/s/……/exec</code> という形式です。</li><li>このサイトを制作したCodexのチャットへ、そのURLを貼り付けてください。</li></ol><p class="important">「このURLをフォームに設定してください」と一緒に貼り付ければ、Codexが <code>contact.html</code> の設定を完了します。</p></section>
-  <section class="step" id="step5"><h2><span class="num">5</span>送信テストと確認</h2><ol><li>公開されたサイトの「Contact」ページを開きます。</li><li>テスト用のお名前、メールアドレス、カテゴリー、内容を入力して送信します。</li><li>ページ内に「お問い合わせありがとうございます」と表示されることを確認します。</li><li>Googleスプレッドシートに「お問い合わせ」シートが作られ、日時・お名前・貴社名・メールアドレス・カテゴリー・内容が記録されたことを確認します。</li><li><code>kazutatsu0827@gmail.com</code> に通知メールが届いたことを確認します。見当たらない場合は迷惑メールフォルダーも確認してください。</li></ol></section>
-  <section class="check"><h2>うまく送信できない場合</h2><ul><li>URLの末尾が <code>/exec</code> になっているか確認します。</li><li>デプロイ設定の「アクセスできるユーザー」が「全員」か確認します。</li><li>コードを更新した場合は「デプロイ」→「デプロイを管理」→編集→「新バージョン」で再デプロイします。</li><li>Apps Scriptの左メニュー「実行数」でエラー内容を確認します。</li></ul><a class="button" href="index.html">サイトのHomeへ戻る</a></section>
-</main></body></html>
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>紫あゆな｜ホームページは移転しました</title>
+<link rel="canonical" href="https://ayunamurasaki.github.io/hp/">
+<script>location.replace("https://ayunamurasaki.github.io/hp/" + location.hash);</script>
+<meta http-equiv="refresh" content="1;url=https://ayunamurasaki.github.io/hp/">
+<style>body{margin:0;padding:48px 20px;font-family:sans-serif;text-align:center;color:#2b3a44;background:#f4f8fb}a{color:#3e6f8e;font-weight:700}</style>
+</head>
+<body>
+<p>紫あゆなのホームページは、新しい場所へ移りました。</p>
+<p><a href="https://ayunamurasaki.github.io/hp/">新しいホームページへ</a></p>
+</body>
+</html>
